@@ -15,6 +15,15 @@ function ThemedButton() {
 };
 
 function App() {
+  const [direction, setDirection] = React.useState('ltr');
+  const handleToggleDirection = () => {
+    if (direction === 'ltr') {
+      setDirection('rtl');
+    }
+    else {
+      setDirection('ltr');
+    }
+  };
   const [theme, setTheme] = React.useState('day');
   const handleToggleTheme = () => {
     if (theme === 'day') {
@@ -24,6 +33,7 @@ function App() {
       setTheme('day');
     }
   };
+
   /*
   return (
     <div className="App">
@@ -32,8 +42,9 @@ function App() {
   );
 */
   return (
-    <TestProvider theme={theme}>
+    <TestProvider direction={direction} theme={theme}>
       <div className="App">
+        <button onClick={handleToggleDirection}>Toggle Direction</button>
         <button onClick={handleToggleTheme}>Toggle Theme</button>
         <hr />
         <ThemedButton />

@@ -11,6 +11,12 @@ export function useTestContext() {
 }
 
 export class TestProvider extends Component {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.direction !== prevProps.direction) {
+      window.document.body.dir = this.props.direction;
+      console.info('TestProvider setdirection', window.document.body);
+    }
+  }
   render() {
     const { children, direction, theme } = this.props;
 
