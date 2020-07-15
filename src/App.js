@@ -23,13 +23,21 @@ function ThemedButton() {
   );
 }
 function App() {
-  /*
-<ThemeContext.Provider value={themes.dark}>
-</ThemeContext.Provider>
-*/
+  const [theme, setTheme] = React.useState(themes.dark);
+  const handleToggle = () => {
+    if (theme === themes.dark) {
+      setTheme(themes.light);
+    } else {
+      setTheme(themes.dark);
+    }
+  };
   return (
     <div className="App">
-      <ThemedButton />
+      <button onClick={handleToggle}>Toggle</button>
+      <hr />
+      <ThemeContext.Provider value={theme}>
+        <ThemedButton />
+      </ThemeContext.Provider>
     </div>
   );
 }
