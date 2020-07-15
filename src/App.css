@@ -1,38 +1,50 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Bangers|Lobster+Two");
+
+.app {
+  width: 400px;
+  margin: 100px auto 0;
+  border: outset;
+  border-radius: 5px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image {
+  width: 400px;
+  height: 350px;
+  padding-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Day-image {
+  background-color: #99ffff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ball {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 20px auto 0;
 }
 
-.App-link {
-  color: #61dafb;
+.Day-ball {
+  background-color: yellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Night-image {
+  background-color: #1a1a1a;
+}
+
+.Night-ball {
+  background-color: lightgray;
+}
+
+button {
+  border-radius: 15px;
+  margin-top: 150px;
+  font: 20px "Lobster Two";
+}
+
+button:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px grey;
 }
