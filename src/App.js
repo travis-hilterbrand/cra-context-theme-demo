@@ -1,18 +1,8 @@
 import React from "react";
 
 import "./App.css";
-import { createTheme, useTestContext, TestProvider } from "./TestContext";
-
-function ThemedButton() {
-  /*
-    const context = React.useContext(TestContext);
-    console.log("context", context);
-    const contextClass = context && context.theme ? context.theme : undefined;
-    return <button className={contextClass}>I am styled by theme context!</button>;
-  */
-  const testContext = useTestContext();
-  return <button style={{ color: testContext.theme.colors.primary }}>I am styled by theme context!</button>;
-};
+import { createTheme, TestProvider } from "./TestContext";
+import ThemedButton from './ThemedButton';
 
 const myTheme = createTheme({
   colors: {
@@ -31,13 +21,6 @@ function App() {
     }
   };
 
-  /*
-  return (
-    <div className="App">
-      <ThemedButton />
-    </div>
-  );
-*/
   return (
     <TestProvider direction={direction} theme={myTheme}>
       <div className="App">
@@ -47,15 +30,6 @@ function App() {
       </div>
     </TestProvider>
   );
-  /*
-    return (
-      <TestProvider theme={"night"}>
-        <div className="App">
-          <ThemedButton />
-        </div>
-      </TestProvider>
-    );
-  */
 }
 
 export default App;
