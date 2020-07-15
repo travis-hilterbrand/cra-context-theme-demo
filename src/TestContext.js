@@ -1,8 +1,18 @@
 import React, { Component } from "react";
+import { clone, merge } from 'lodash';
+
+const DefaultTheme = {
+  colors: {
+    primary: 'blue',
+  }
+};
+export function createTheme(userTheme) {
+  return merge({}, DefaultTheme, userTheme);
+}
 
 const TestProviderDefaultProps = {
   direction: 'ltr',
-  theme: 'day'
+  theme: clone(DefaultTheme)
 };
 
 export const TestContext = React.createContext(TestProviderDefaultProps);

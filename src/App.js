@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./App.css";
-import { useTestContext, TestContext, TestProvider } from "./TestContext";
+import { createTheme, useTestContext, TestProvider } from "./TestContext";
 
 function ThemedButton() {
   /*
@@ -11,8 +11,14 @@ function ThemedButton() {
     return <button className={contextClass}>I am styled by theme context!</button>;
   */
   const testContext = useTestContext();
-  return <button className={testContext.theme}>I am styled by theme context!</button>;
+  return <button style={{ color: testContext.theme.colors.primary }}>I am styled by theme context!</button>;
 };
+
+const myTheme = createTheme({
+  colors: {
+    primary: 'green',
+  }
+})
 
 function App() {
   const [direction, setDirection] = React.useState('ltr');
@@ -24,15 +30,6 @@ function App() {
       setDirection('ltr');
     }
   };
-  const [theme, setTheme] = React.useState('day');
-  const handleToggleTheme = () => {
-    if (theme === 'day') {
-      setTheme('night');
-    }
-    else {
-      setTheme('day');
-    }
-  };
 
   /*
   return (
@@ -42,10 +39,9 @@ function App() {
   );
 */
   return (
-    <TestProvider direction={direction} theme={theme}>
+    <TestProvider direction={direction} theme={myTheme}>
       <div className="App">
         <button onClick={handleToggleDirection}>Toggle Direction</button>
-        <button onClick={handleToggleTheme}>Toggle Theme</button>
         <hr />
         <ThemedButton />
       </div>
